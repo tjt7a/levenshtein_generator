@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<macro-definition name="Simple_Match_Block" id="Simple_Match_Block">
+	<description></description>
+	<header>
+		<interface-declarations>
+			<port id="match_out" type="out">
+				<description></description>
+			</port>
+			<port id="match_in" type="in">
+				<description></description>
+			</port>
+		</interface-declarations>
+		<parameter-declarations>
+			<parameter parameter-name="%char" default-value="c">
+			</parameter>
+		</parameter-declarations>
+	</header>
+	<body>
+		<port-definitions>
+			<port-out id="match_out">
+				<activate-from-event element="Character"/>
+			</port-out>
+			<port-in id="match_in">
+				<activate-on-event element="Character"/>
+			</port-in>
+		</port-definitions>
+	<state-transition-element id="Character" symbol-set="%char">
+	</state-transition-element>
+	</body>
+</macro-definition>

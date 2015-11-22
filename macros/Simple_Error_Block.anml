@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<macro-definition name="Simple_Error_Block" id="Simple_Error_Block">
+	<description></description>
+	<header>
+		<interface-declarations>
+			<port id="error_in" type="in">
+				<description></description>
+			</port>
+			<port id="match_out" type="out">
+				<description></description>
+			</port>
+			<port id="match_in" type="in">
+				<description></description>
+			</port>
+			<port id="error_out" type="out">
+				<description></description>
+			</port>
+		</interface-declarations>
+		<parameter-declarations>
+			<parameter parameter-name="%char" default-value="c">
+				<description>Character to match on</description>
+			</parameter>
+		</parameter-declarations>
+	</header>
+	<body>
+		<port-definitions>
+			<port-in id="error_in">
+				<activate-on-event element="error"/>
+			</port-in>
+			<port-out id="match_out">
+				<activate-from-event element="_2"/>
+			</port-out>
+			<port-in id="match_in">
+				<activate-on-event element="_2"/>
+			</port-in>
+			<port-out id="error_out">
+				<activate-from-event element="error"/>
+			</port-out>
+		</port-definitions>
+	<state-transition-element id="_2" symbol-set="%char">
+	</state-transition-element>
+	<state-transition-element id="error" symbol-set="*">
+	</state-transition-element>
+	</body>
+</macro-definition>

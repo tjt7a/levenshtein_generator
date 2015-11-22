@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<macro-definition name="Simple_Starting_Error_Block" id="Simple_Starting_Error_Block">
+	<description></description>
+	<header>
+		<interface-declarations>
+			<port id="error_out" type="out">
+				<description></description>
+			</port>
+		</interface-declarations>
+	</header>
+	<body>
+		<port-definitions>
+			<port-out id="error_out">
+				<activate-from-event element="_9"/>
+			</port-out>
+		</port-definitions>
+	<state-transition-element id="_9" symbol-set="*" start="all-input">
+	</state-transition-element>
+	</body>
+</macro-definition>

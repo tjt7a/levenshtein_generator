@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<macro-definition name="Starting_Match_Block" id="Starting_Match_Block">
+	<description></description>
+	<header>
+		<interface-declarations>
+			<port id="match_out" type="out">
+				<description></description>
+			</port>
+		</interface-declarations>
+		<parameter-declarations>
+			<parameter parameter-name="%char" default-value="w">
+				<description>character to match</description>
+			</parameter>
+		</parameter-declarations>
+	</header>
+	<body>
+		<port-definitions>
+			<port-out id="match_out">
+				<activate-from-event element="_19"/>
+			</port-out>
+		</port-definitions>
+	<state-transition-element id="_19" symbol-set="%char" start="all-input">
+	</state-transition-element>
+	</body>
+</macro-definition>

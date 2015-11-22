@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<automata-network name="{{ context['name'] }}" id="{{ context['name'] }}">
+	<description>{{ context['description'] }}</description>
+
+	{% for block_coordinates, block_definition in context['blocks'].iteritems() %}
+
+	{% if block_definition[1] == "CSTE" %}
+	<state-transition-element id="{{ block_definition[0] }}" symbol-set="*">
+
+		{% for connection in context['blocks_connections'][block_coordinates] %}
+		<activate-on-match element="{{ connection[0] }}{% if connection[0] not in context['ste_blocks'] %}:{{ connection[2] }}"{% else %}"{% endif %}/>
+		{% endfor %}
+	</state-transition-element>
+
+	{% else %}
+	<macro-reference id="{{ block_definition[0] }}" use="{{ context['block_lookup_table'][block_definition[1]] }}">
+		{% if context['blocks_connections'][block_coordinates] %}
+		<activate-out>
+		{% for connection in context['blocks_connections'][block_coordinates] %}
+		{% for out_port in connection[1] %}
+		<activate-from-macro element="{{ connection[0] }}{% if connection[0] not in context['ste_blocks'] %}:{{ connection[2] }}"{% else %}"{% endif %} source="{{ out_port }}"/>
+		{% endfor %}
+		{% endfor %}
+		</activate-out>
+		{% endif %}
+		{% if block_definition[1] != "SSEB" %}
+		<substitutions>
+			<replace parameter-name="%char" replace-with="{{ context['string'][ (block_definition[0]-1) % context['width']] }}"/>
+		</substitutions>
+		{% endif %}
+	</macro-reference>
+	{% endif %}
+	{% endfor %}
+	
+</automata-network>
