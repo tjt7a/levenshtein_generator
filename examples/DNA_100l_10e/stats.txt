@@ -1,0 +1,3 @@
+This is an example Hierarchical Levenshtein Automaton for a string of length 100, for up to 10 edits.
+The string is composed of 100 random characters from the DNA set {a,c,t,g}:
+agctcgtggctgtcagcgattgcatatttgacaattcgaaacaatatttagtcgggtaccagagtacaagactccaggcaaatctcaagcggagatgcta
